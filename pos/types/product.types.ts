@@ -3,6 +3,7 @@ export interface IProductBase {
   name: string
   unitPrice: number
   isPackage?: boolean
+  uom: string
 }
 
 export interface CustomField {
@@ -40,4 +41,15 @@ export interface ICategory {
   name: string
   isRoot: boolean
   order: string
+}
+
+export interface IUom {
+  _id: string
+  code: string
+  isForSubscription: boolean
+  subscriptionConfig: {
+    _id: string
+    period: string
+    rule: string
+  }
 }

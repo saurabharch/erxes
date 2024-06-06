@@ -49,7 +49,7 @@ export interface IProduct extends IProductCommonFields {
   vendorCode?: string;
   mergedIds?: string[];
   attachmentMore?: IAttachment[];
-  uom?: string;
+  uom: string;
   subUoms?: ISubUom[];
   taxType?: string;
   taxCode?: string;

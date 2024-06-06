@@ -88,11 +88,12 @@ export const addToCart = (
     return changeCartItem({ _id, count: count + 1, fromAdd: true }, cart)
   }
 
-  const { unitPrice, _id, name, attachment } = product
+  const { unitPrice, _id, name, attachment, uom } = product
 
   const cartItem = {
     _id: Math.random().toString(),
     productId: _id,
+    uom,
     count: 1,
     unitPrice,
     productName: name,

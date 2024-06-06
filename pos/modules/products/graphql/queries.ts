@@ -44,6 +44,7 @@ const products = gql`
       description
       remainder
       hasSimilarity
+      uom
       attachment {
         url
       }
@@ -117,6 +118,17 @@ const getKioskCategory = gql`
   }
 `
 
+const uoms = gql`
+  query Uoms {
+    uoms {
+      _id
+      code
+      isForSubscription
+      subscriptionConfig
+    }
+  }
+`
+
 const queries = {
   productCategories,
   products,
@@ -125,5 +137,6 @@ const queries = {
   getInitialCategory,
   productSimilarities,
   getKioskCategory,
+  uoms,
 }
 export default queries

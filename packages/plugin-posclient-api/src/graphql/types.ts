@@ -33,6 +33,7 @@ export interface IPosLoginParams {
 export interface IOrderItemInput {
   _id: string;
   productId: string;
+  uom: string;
   count: number;
   unitPrice: number;
   isPackage?: boolean;

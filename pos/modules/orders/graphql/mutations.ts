@@ -15,6 +15,8 @@ const addEditParamDefs = `
     $dueDate: Date
     $isPre: Boolean
     $directDiscount: Float
+    $isSubscription: Boolean
+    $closeDate: Date
 `
 
 const addEditParams = `
@@ -32,6 +34,8 @@ const addEditParams = `
     dueDate: $dueDate
     isPre: $isPre
     directDiscount: $directDiscount
+    isSubscription: $isSubscription
+    closeDate: $closeDate
 `
 
 const ordersAdd = gql`

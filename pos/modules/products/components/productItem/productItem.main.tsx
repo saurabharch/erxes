@@ -3,6 +3,7 @@ import { useSetAtom } from "jotai"
 
 import { IProduct } from "@/types/product.types"
 import { formatNum } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import Image from "@/components/ui/image"
 import {
   Tooltip,
@@ -18,6 +19,8 @@ const ProductItem = ({
   unitPrice,
   remainder,
   _id,
+  type,
+  uom
 }: IProduct) => {
   const addToCart = useSetAtom(addToCartAtom)
 
@@ -25,7 +28,7 @@ const ProductItem = ({
     <div
       className="relative rounded-lg border p-3 text-center "
       title={`${code} - ${name}`}
-      onClick={() => addToCart({ name, _id, unitPrice })}
+      onClick={() => addToCart({ name, _id, unitPrice, uom })}
     >
       <Image
         src={(attachment || {}).url || ""}
@@ -33,7 +36,11 @@ const ProductItem = ({
         width={200}
         height={100}
         className="mb-3 aspect-[4/3] h-auto w-full object-contain px-3"
+        fallBack={type === "subscription" ? "subscription" : undefined}
       />
+      {type === "subscription" && (
+        <Badge className="absolute top-3 right-3">subscription</Badge>
+      )}
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>

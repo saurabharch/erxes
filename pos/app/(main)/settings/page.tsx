@@ -13,6 +13,8 @@ import { useAtom } from "jotai"
 import Image from "@/components/ui/image"
 import Loader from "@/components/ui/loader"
 
+import SubscriptionConfig from "../../../modules/settings/components/subscriptionConfig"
+
 const Settings = () => {
   const [user] = useAtom(currentUserAtom)
   const [currentConfig] = useAtom(configAtom)
@@ -39,6 +41,7 @@ const Settings = () => {
       </div>
       <ChooseTheme />
       <Grid config={config} />
+      <SubscriptionConfig />
       <GolomtConfig paymentTypes={config.paymentTypes} />
       <ProductSimilarityConfig />
       <ScrollerWidth />

@@ -1,8 +1,8 @@
 "use client"
 
-import { FC, useEffect, useState } from "react"
+import { FC, useState } from "react"
 import NextImage, { ImageLoaderProps, ImageProps } from "next/image"
-import { Package } from "lucide-react"
+import { CalendarPlus2Icon, Package } from "lucide-react"
 
 import { cn, readFile } from "@/lib/utils"
 
@@ -31,13 +31,6 @@ const Image: FC<
   const [srcI, setSrcI] = useState(fixedSrc || fallBack || "/product.png")
   const handleComplete = () => setIsImageLoading(false)
 
-  useEffect(() => {
-    if (src) {
-      const fixedSrc = readFile(src || "")
-      setSrcI(fixedSrc)
-    }
-  }, [src])
-
   const updatedProps = {
     ...rest,
     src: srcI,
@@ -47,6 +40,14 @@ const Image: FC<
     height,
     onError,
   }
+
+  if (srcI === "subscription")
+    return (
+      <CalendarPlus2Icon
+        className={cn("text-zinc-300", className)}
+        strokeWidth={0.5}
+      />
+    )
 
   if (srcI === "/product.png" || !srcI)
     return (

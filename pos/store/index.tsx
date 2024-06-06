@@ -7,12 +7,15 @@ import { atomWithStorage } from "jotai/utils"
 
 import { modeT } from "@/types/config.types"
 import { IPaymentAmountType } from "@/types/order.types"
+import { IUom } from "@/types/product.types"
 
 // products
 export const searchAtom = atom<string>("")
 export const activeCategoryAtom = atom<string>("")
 export const activeCatName = atom<string>("")
 export const hiddenParentsAtom = atom<string[]>([])
+export const productsTypeAtom = atom<string>("")
+export const uomsAtom = atom<IUom[]>([])
 
 // local
 export const currentAmountAtom = atom<number>(0)

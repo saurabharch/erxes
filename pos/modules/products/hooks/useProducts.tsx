@@ -3,11 +3,12 @@ import {
   activeCategoryAtom,
   modeAtom,
   productCountAtom,
+  productsTypeAtom,
   searchAtom,
 } from "@/store"
 import { similarityConfigAtom } from "@/store/config.store"
 import { useQuery } from "@apollo/client"
-import { useAtom, useAtomValue, useSetAtom } from "jotai"
+import { useAtomValue, useSetAtom } from "jotai"
 
 import { IProduct, IUseProducts } from "@/types/product.types"
 
@@ -21,11 +22,12 @@ export const useProducts = (props?: {
   const { skip, perPage, onCompleted } = props || {}
   const groupedSimilarity = useAtomValue(similarityConfigAtom)
 
-  const [search] = useAtom(searchAtom)
+  const search = useAtomValue(searchAtom)
   const [searchValue, setSearchValue] = useState(search)
   const categoryId = useAtomValue(activeCategoryAtom)
   const setProductCount = useSetAtom(productCountAtom)
   const mode = useAtomValue(modeAtom)
+  const type = useAtomValue(productsTypeAtom)
 
   const isCafe = mode === "coffee-shop"
   const isKiosk = mode === "kiosk"
@@ -38,6 +40,7 @@ export const useProducts = (props?: {
       page: 1,
       groupedSimilarity: isCafe ? groupedSimilarity : undefined,
       isKiosk: isKiosk ? true : undefined,
+      type,
     },
     skip,
     onCompleted(data) {

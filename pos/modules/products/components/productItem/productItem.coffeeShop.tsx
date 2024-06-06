@@ -17,14 +17,14 @@ const ChooseSimilarities = dynamic(() => import("../ChooseFromSimilarities"), {
 
 const ProductItem = (props: IProduct) => {
   const [open, setOpen] = useState(false)
-  const { name, unitPrice, _id, hasSimilarity } = props
+  const { name, unitPrice, _id, hasSimilarity, uom } = props
   const addToCart = useSetAtom(addToCartAtom)
 
   return (
     <>
       <ProductItemWrapper
         onClick={() =>
-          hasSimilarity ? setOpen(true) : addToCart({ name, _id, unitPrice })
+          hasSimilarity ? setOpen(true) : addToCart({ name, _id, unitPrice, uom })
         }
         className="relative"
       >

@@ -84,6 +84,7 @@ export const types = `
     categoryId: String
     count: Float!
     orderId: String!
+    uom: String
     unitPrice: Float
     discountAmount: Float
     discountPercent: Float

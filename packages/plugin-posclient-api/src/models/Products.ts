@@ -76,9 +76,8 @@ export interface IProductCategoryModel extends Model<IProductCategoryDocument> {
 export const loadProductCategoryClass = models => {
   class ProductCategory {
     public static async getProductCategory(selector: any) {
-      const productCategory = await models.ProductCategories.findOne(
-        selector
-      ).lean();
+      const productCategory =
+        await models.ProductCategories.findOne(selector).lean();
 
       if (!productCategory) {
         throw new Error('Product & service category not found');

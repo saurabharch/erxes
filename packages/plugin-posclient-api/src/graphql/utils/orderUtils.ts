@@ -224,6 +224,7 @@ export const updateOrderItems = async (
   for (const item of items) {
     const doc = {
       productId: item.productId,
+      uom: item.uom,
       count: item.count,
       unitPrice: item.unitPrice,
       discountPercent: item.discountPercent,
@@ -565,6 +566,7 @@ export const prepareOrderDoc = async (
     );
 
     item.unitPrice = isNaN(fixedUnitPrice) ? 0 : fixedUnitPrice;
+    item.uom = productsOfId[item.productId].uom;
     doc.totalAmount += (item.count || 0) * fixedUnitPrice;
   }
 
@@ -636,6 +638,7 @@ export const prepareOrderDoc = async (
         items.push({
           _id: Math.random().toString(),
           productId: addProduct._id,
+          uom: addProduct.uom,
           count: toAddItem.count,
           unitPrice: fixedUnitPrice,
           isPackage: true,
@@ -657,10 +660,12 @@ export const prepareOrderDoc = async (
     }).lean();
 
     if (deliveryProd) {
-      const deliveryUnitPrice = (deliveryProd.prices || {})[config.token || ''] || 0;
+      const deliveryUnitPrice =
+        (deliveryProd.prices || {})[config.token || ''] || 0;
       items.push({
         _id: Math.random().toString(),
         productId: deliveryProd._id,
+        uom: deliveryProd.uom,
         count: 1,
         unitPrice: deliveryUnitPrice,
         isPackage: true,

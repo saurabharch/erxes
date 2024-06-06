@@ -20,12 +20,11 @@ export const orderFields = `
   isPre
   directDiscount
 `
-export const orderItemBaseFields = `
- _id
- discountAmount
-`
+
 export const orderItemFields = `
-    ${orderItemBaseFields}
+    _id
+    uom
+    discountAmount
     unitPrice
     productName
     count

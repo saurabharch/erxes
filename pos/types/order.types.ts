@@ -21,6 +21,7 @@ export interface OrderItem extends OrderItemInput {
   createdAt?: string
   categoryId?: string
   orderId?: string
+  uom: string
   discountAmount?: number
   productName?: string
   productImgUrl?: string

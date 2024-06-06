@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 
 import ProductItem from "./components/productItem/productItem.main"
 import { FETCH_MORE_PER_PAGE, useProducts } from "./hooks/useProducts"
+import useUoms from "./hooks/useUoms"
 
 const Products = () => {
   const { ref, inView } = useInView({
@@ -16,12 +17,13 @@ const Products = () => {
   })
 
   const { products, productsCount, loading, handleLoadMore } = useProducts()
+  const { loading: loadingUoms } = useUoms()
 
   useEffect(() => {
     inView && handleLoadMore()
   }, [handleLoadMore, inView])
 
-  if (loading) return <div className="p-4">loading...</div>
+  if (loading || loadingUoms) return <div className="p-4">loading...</div>
 
   return (
     <ScrollArea className="w-full pr-3">

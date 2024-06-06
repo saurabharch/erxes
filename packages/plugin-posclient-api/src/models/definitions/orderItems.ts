@@ -11,6 +11,7 @@ import {
 export interface IOrderItem {
   createdAt?: Date;
   productId: string;
+  uom: string;
   count: number;
   unitPrice?: number;
   discountAmount?: number;
@@ -37,6 +38,7 @@ export const orderItemSchema = schemaHooksWrapper(
     createdAt: getDateFieldDefinition('Created at'),
     productId: field({ type: String, label: 'Product' }),
     productName: field({ type: String, label: 'Product Name if subtoken' }),
+    uom: field({ type: String, label: 'Uom' }),
     count: getNumberFieldDefinition({ label: 'Count', positive: true }),
     unitPrice: getNumberFieldDefinition({
       label: 'Unit price',
