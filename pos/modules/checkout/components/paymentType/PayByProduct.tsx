@@ -9,10 +9,10 @@ const PayByProduct = () => {
   const items = useAtomValue(cartAtom)
 
   return (
-    <ScrollArea className="h-[25rem]">
+    <ScrollArea className="h-[30vh] md:h-[25rem]">
       {(items || []).map((item) => (
         <OrderItem {...item} key={item._id} />
-      ))}                                               
+      ))}
     </ScrollArea>
   )
 }

@@ -19,14 +19,16 @@ const PaymentType = () => {
   const setView = useSetAtom(checkoutModalViewAtom)
 
   return (
-    <div className="p-3 min-h-[36rem]">
+    <div className="p-3 min-h-[36rem] flex flex-col">
       <h2 className="text-base font-bold mb-3 flex items-center gap-4">
         {getLabel(paymentTerm) + ":"}
       </h2>
       <div className="p-1 border-b pb-2 mb-4">
         <PaymentTypeInput />
       </div>
-      <PaymentTypeHandlers />
+      <div className="flex-auto">
+        <PaymentTypeHandlers />
+      </div>
       <Button
         className="bg-green-500 hover:bg-green-500/90 whitespace-nowrap font-bold w-full"
         size={"lg"}
